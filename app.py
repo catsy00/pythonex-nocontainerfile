@@ -3,8 +3,6 @@ from flask import Flask
 import pymysql
 app = Flask(__name__)
 
-db = pymysql.connect(host='mysql-pv',port=3306, user='root',passwd='minkim', db='sampledb',charset='utf8',autocommit=True)
-
 @app.route("/")
 def main():
     color = os.environ.get('COLOR', "green") 
@@ -13,11 +11,13 @@ def main():
 
 @app.route('/db')
 def db_select():
-    
+    db = pymysql.connect(host='mysql-pv',port=3306, user='root',passwd='minkim', db='sampledb',charset='utf8',autocommit=True)
+
     cursor = db.cursor()
     cursor.execute("SELECT * FROM sampledb;")
     data = cursor.fetchone()
     
+    db.close()
 
     return data
 
@@ -33,7 +33,6 @@ def egg():
 def healthz():
     return "OK!"
 
-db.close()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
