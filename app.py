@@ -13,7 +13,7 @@ def main():
 def db_select():
 
     try: 
-        db = pymysql.connect(host='mysql-pv',port=3306, user='root',passwd='minkim', db='sampledb',charset='utf8',autocommit=True)
+        db = pymysql.connect(host='172.30.62.113',port=3306, user='root',passwd='minkim', db='sampledb',charset='utf8',autocommit=True)
 
         cursor = db.cursor()
         cursor.execute("SELECT * FROM sampledb;")
