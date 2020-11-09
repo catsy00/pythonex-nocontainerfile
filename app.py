@@ -11,17 +11,12 @@ def main():
 
 @app.route('/db')
 def db_select():
-
-    try: 
-        db = pymysql.connect(host='172.30.62.113',port=3306, user='root',passwd='minkim', db='sampledb',charset='utf8',autocommit=True)
-
-        cursor = db.cursor()
-        cursor.execute("SELECT * FROM sampledb;")
-        data = cursor.fetchone()
-        return data
-    finally:
-        if con:
-            con.close()
+    db = pymysql.connect(host='172.30.62.113',port=3306, user='root',passwd='minkim', db='sampledb',charset='utf8',autocommit=True)
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM sampledb;")
+    data = cursor.fetchone()
+    return data
+    con.close()
 
 @app.route('/how are you')
 def hello():
