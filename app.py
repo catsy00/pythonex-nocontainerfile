@@ -11,9 +11,9 @@ def main():
 
 @app.route('/db')
 def db_select():
-    db = pymysql.connect(host='172.30.62.113',port=3306, user='root',passwd='minkim', db='sampledb',charset='utf8',autocommit=True)
+    db = pymysql.connect(host='mysql-pv',port=3306, user='root',passwd='minkim', db='sampledb',charset='utf8',autocommit=True)
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM sampledb;")
+    cursor.execute("SELECT * FROM authors;")
     data = cursor.fetchone()
     return data
     con.close()
