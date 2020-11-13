@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def main():
     color = os.environ.get('COLOR', "green") 
-    message = "Welcome !!! This is "+color+" environment  TJKIM" 
+    message = "Welcome !!! This is "+color+" environment...." 
     return message
 
 @app.route('/db')
